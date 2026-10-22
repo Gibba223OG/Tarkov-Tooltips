@@ -19,7 +19,7 @@ When a release is published, go to **[Releases](https://github.com/Gibba223OG/Ta
 
 ## What does it show?
 
-- **Item prices:** flea-market price and trader information where data is available.
+- **Item prices and best trader:** flea-market prices and the best trader to sell an item to, where data is available.
 - **Quest requirements:** how many of a matching item you need, along with its quest.
 - **Ammunition:** damage, penetration, and visual ratings for armor classes 1–6 based on Wiki-derived data.
 - **PvE pricing:** optional PvE mode.
