@@ -1,0 +1,28 @@
+export default class TarkovMarketItem {
+  uid!: string;
+  name!: string;
+  bannedOnFlea!: boolean;
+  haveMarketData!: boolean;
+  tags!: string[];
+  shortName!: string;
+  price!: number;
+  basePrice!: number;
+  avg24hPrice!: number;
+  avg7daysPrice!: number;
+  traderName!: string;
+  traderPrice!: number;
+  traderPriceCur!: string;
+  traderPriceRub!: number;
+  updated!: string;
+  slots!: number;
+  diff24h!: number;
+  diff7days!: number;
+  icon!: string;
+  link!: string;
+  wikiLink!: string;
+  img!: string;
+  imgBig!: string;
+  bsgId!: string;
+  isFunctional!: boolean;
+  reference!: string;
+}

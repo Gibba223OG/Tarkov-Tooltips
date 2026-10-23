@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tarkov Tooltips Popup (Tauri)</title>
+  <style>
+    html,body,#root {margin:0;padding:0;background:transparent !important;
+      overflow:hidden!important;width:fit-content;height:fit-content;}
+    ::-webkit-scrollbar{display:none!important}
+  </style>
+  <script>
+    (function(){
+      "use strict";
+      let config = { popupBackground:"#080909", popupBorder:"#59605a",
+                     showOcrDiagnostics:false, showItemName:false };
+      const configSubscribers=[];
+      const itemSubscribers=[];
+      let latestSeq=0;
+      let latestCursorX=0,latestCursorY=0;
+      let pendingTimer=null;
+      const electronShim={
+        getUserConfig:()=>Promise.resolve(config),
+        onConfigChanged:(cb)=>{configSubscribers.push(cb);},
+        receive:(channel,cb)=>{
+          if(channel==="new-tooltip-item") itemSubscribers.push(cb);
+        }
+      };
+      window.electron=electronShim;
+      function updateConfig(next){
+        config=Object.assign({},config,next||{});
+        for(const fn of configSubscribers)fn(config);
+      }
+      function sendItem(item){
+        for(const fn of itemSubscribers)fn(null,item);
+      }
+      async function connect(){
+        const tauri=window.__TAURI__;
+        if(!tauri?.event?.listen || !tauri?.core?.invoke){
+          setTimeout(connect,50);return;
+        }
+        await tauri.event.listen("host-message", async(event)=>{
+          const data=event.payload;
+          if(!data || !data.type)return;
+          latestSeq=data.seq??latestSeq;
+          if(pendingTimer){clearTimeout(pendingTimer);pendingTimer=null;}
+          if(data.type==="config") {updateConfig(data.config); return;}
+          if(data.type==="hide"){sendItem(null);return;}
+          if(data.type!=="item")return;
+          updateConfig(data.config);
+          latestCursorX=data.cursorX;
+          latestCursorY=data.cursorY;
+          sendItem(data.item);
+          // Measure the actual price card, not the hidden 850x700 viewport.
+          const expected=latestSeq;
+          pendingTimer=setTimeout(async()=>{
+            pendingTimer=null;
+            await document.fonts.ready;
+            if(expected!==latestSeq)return;
+            const card=document.querySelector("#root > div");
+            if(!card || !card.textContent?.trim())return;
+            try{
+              // Restore original card layout. v1.2.1 accidentally added
+              // 12px padding on two sides and an unconditional 16px width.
+              // Neither is needed for this design.
+              card.style.removeProperty("width");
+              card.style.removeProperty("height");
+              card.style.removeProperty("padding-right");
+              card.style.removeProperty("padding-bottom");
+              // Only the ammunition card gains an extra 8 unzoomed CSS pixels on the right.
+              if(card.hasAttribute("data-pricechecker-ammo")) card.style.paddingRight="8px";
+              card.style.boxSizing="border-box";
+
+              const initial=card.getBoundingClientRect();
+              const rects=Array.from(card.querySelectorAll("*"),el=>el.getBoundingClientRect());
+              let right=rects.reduce((v,r)=>Math.max(v,r.right),initial.right);
+              const walker=document.createTreeWalker(card,NodeFilter.SHOW_TEXT);
+              let node;
+              while((node=walker.nextNode())){
+                if(!node.textContent || !node.textContent.trim())continue;
+                const range=document.createRange();
+                range.selectNodeContents(node);
+                for(const r of range.getClientRects())right=Math.max(right,r.right);
+              }
+              // Freeze only the NATURALLY computed width for this item.
+              // That prevents a resize from causing the text to reflow
+              // into a larger card than the new native window.
+              const zoom=Number(card.style.zoom)||1;
+              const maxWidth=(card.hasAttribute("data-pricechecker-ammo")?583:540)*zoom;
+              // scrollWidth is expressed in the unzoomed card layout's units.
+              const naturalWidth=Math.min(maxWidth,Math.ceil(Math.max(
+                initial.width,card.scrollWidth*zoom,right-initial.left
+              )));
+              // width is assigned in pre-zoom CSS units; the native size uses scaled pixels.
+              card.style.width=(naturalWidth/zoom)+"px";
+              await new Promise(resolve=>requestAnimationFrame(resolve));
+              if(expected!==latestSeq)return;
+
+              let box=card.getBoundingClientRect();
+              const firstWidth=Math.ceil(Math.max(box.width,card.scrollWidth*zoom));
+              const firstHeight=Math.ceil(Math.max(box.height,card.scrollHeight*zoom));
+              if(firstWidth<1 || firstHeight<1)return;
+
+              // Hidden resize to natural dimensions, then check once more.
+              await tauri.core.invoke("prepare_popup",{
+                width:firstWidth,height:firstHeight,pixelRatio:window.devicePixelRatio,seq:expected
+              });
+              await new Promise(resolve=>requestAnimationFrame(
+                ()=>requestAnimationFrame(resolve)));
+              if(expected!==latestSeq)return;
+
+              box=card.getBoundingClientRect();
+              const descendants=Array.from(card.querySelectorAll("*"));
+              const extRight=descendants.reduce(
+                (v,el)=>Math.max(v,el.getBoundingClientRect().right),box.right);
+              const extBottom=descendants.reduce(
+                (v,el)=>Math.max(v,el.getBoundingClientRect().bottom),box.bottom);
+
+              // Diagnostic ONLY: zero transparent rendering allowance
+              // on right and bottom. No changes to card padding or CSS,
+              // DPI pixel ratio, transparency, or any native window settings.
+              const cardWidth=Math.ceil(Math.max(box.width,card.scrollWidth*zoom,extRight-box.left));
+              const cardHeight=Math.ceil(Math.max(box.height,card.scrollHeight*zoom,extBottom-box.top));
+              const width=cardWidth;
+              const height=cardHeight;
+              await tauri.core.invoke("show_popup",{
+                width,height,cursorX:latestCursorX,cursorY:latestCursorY,
+                pixelRatio:window.devicePixelRatio,seq:expected,
+                diagnostics:{cardWidth,cardHeight,width,height,
+                  viewportW:window.innerWidth,viewportH:window.innerHeight,
+                  pixelRatio:window.devicePixelRatio,
+                  rectWidth:box.width,rectHeight:box.height}
+              });
+            }catch(error){console.error("Tauri popup layout failed:",error);}
+          },45);
+        });
+        await tauri.core.invoke("frontend_ready");
+      }
+      window.addEventListener("DOMContentLoaded",connect);
+    })();
+  </script>
+  <script defer src="./index.js"></script>
+</head>
+<body><div id="root"></div></body>
+</html>
