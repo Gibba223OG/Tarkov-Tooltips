@@ -1,0 +1,29 @@
+{
+  "id": "pricechecker-settings-quest-example",
+  "name": "Screw nuts",
+  "shortName": "Screw nuts",
+  "availableOnFleaMarket": true,
+  "prices": {
+    "latest": 40300,
+    "avgDay": 41000,
+    "avgWeek": 41000,
+    "trader": {
+      "name": "Mechanic",
+      "price": 18000
+    }
+  },
+  "tasks": [
+    {
+      "task": "Illustrative task (demo only)",
+      "count": 2,
+      "inRaid": true
+    },
+    {
+      "task": "Second illustrative task",
+      "count": 1,
+      "inRaid": false
+    }
+  ],
+  "slots": 1,
+  "icon": ""
+}

@@ -11,7 +11,7 @@ import { openMainWindow } from "./services/windows";
 import Items from "../models/Items";
 import TooltipWindow from "../models/TooltipWindow";
 import OCRProcess from "../models/OCRProcess";
-import TauriPopupBridge from "../models/TauriPopupBridge";
+import QtPopupBridge from "../models/QtPopupBridge";
 import AlwaysOnTopProcess from "../models/AlwaysOnTopProcess";
 import path from "path";
 import IpcConstants from "../models/IpcConstants";
@@ -230,13 +230,13 @@ try {
   // plugin that tells the Electron app where to look for the Webpack-bundled app code (depending on
   // whether you're running in development or production).
   let items: Items;
-  let tauriPopup: TauriPopupBridge | null = null;
+  let tauriPopup: QtPopupBridge | null = null;
   let ocr: OCRProcess | null = null;
 
   // An independent renderer for manual Settings tests. The real OCR-driven
   // tooltip process remains separate and cannot hide the sample popup.
   type PopupTestMode = "small" | "quest" | "ammo";
-  let testPopup: TauriPopupBridge | null = null;
+  let testPopup: QtPopupBridge | null = null;
   let testPopupMode: PopupTestMode | null = null;
 
   function stopPopupTest() {
@@ -307,7 +307,7 @@ try {
         return;
       }
       try {
-        const bridge = new TauriPopupBridge();
+        const bridge = new QtPopupBridge();
         bridge.start();
         tauriPopup = bridge;
         ocr.tauriPopup = bridge;
@@ -529,7 +529,7 @@ try {
         return null;
       }
       if (!testPopup) {
-        testPopup = new TauriPopupBridge();
+        testPopup = new QtPopupBridge();
         testPopup.start();
       }
       const sample: Item = {

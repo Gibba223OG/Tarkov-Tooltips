@@ -1,7 +1,7 @@
 import { screen, app, BrowserWindow } from "electron";
 import { spawn, ChildProcessWithoutNullStreams } from "child_process";
 import TooltipWindow from "./TooltipWindow";
-import TauriPopupBridge from "./TauriPopupBridge";
+import QtPopupBridge from "./QtPopupBridge";
 import Items from "./Items";
 import IpcConstants from "./IpcConstants";
 import path from "path";
@@ -71,7 +71,7 @@ export default class OCRProcess {
   }
 
   public tooltipWindow: TooltipWindow | null;
-  public tauriPopup: TauriPopupBridge | null = null;
+  public tauriPopup: QtPopupBridge | null = null;
   protected priceListWindow: BrowserWindow;
   protected items: Items;
   protected itemNamesLowerCaseList: string[] = [];

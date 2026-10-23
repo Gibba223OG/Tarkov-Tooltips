@@ -1,45 +1,19 @@
-# Building Tarkov Tooltips v1.00 from source
+# Tarkov Tooltips v1.00 source (Qt + Wiki ammo fix)
 
-This repository is derived from FleaTooltip by sammereye:
-https://github.com/sammereye/flea-tooltip
+This source tree matches the Electron/React application, Qt Quick/PySide6 tooltip sidecar, native C++ OCR helpers, and RapidOCR worker that produced the v1.00 portable package. The old Tauri helper is superseded and removed.
 
-The source tree includes the edited Electron/React/TypeScript application, native
-C++ helper sources, Python RapidOCR worker source, Tauri/Rust native popup source
-and the Tauri frontend.
+Windows dependencies: Node.js/npm compatible with Electron 32 and Electron Forge 7; Windows C++ build tools; Python 3.13; PySide6-Essentials 6.10.3 and PyInstaller; RapidOCR and ONNX models for the OCR sidecar.
 
-## Prerequisites
+- Run npm ci, then npm run package for Electron.
+- The packager requires a complete Qt runtime at qt-popup-dist/TarkovTooltipsQtPopup and an OCR runtime at lib/ocr.
+- Qt source code is under qt-popup/prototype/python, the user-tested QML files under qt-popup/prototype/qml, and static quest data under qt-popup/prototype/data.
+- The Qt helper executable was generated with PyInstaller and the 6.10.3 Essentials wheel; its runtime requires prototype/qml and prototype/data under the PyInstaller _internal directory, plus licensed Bender and Nunito font assets under assets/fonts.
+- Font binaries, OCR models, prebuilt executables, local credentials, dependencies, and build outputs are not part of this public source archive.
 
-- Windows x64
-- Node.js and npm compatible with Electron Forge 7 / Electron 32
-- Rust toolchain with Windows target, for the Tauri 2 popup
-- Visual Studio 2022 C++ build tools / Windows SDK
-- Python, PyInstaller, RapidOCR and ONNX dependencies for OCR worker
+The complete reproducible pipeline for compiling all native OCR and Qt components is NOT supplied here; running npm run package alone will not reproduce the final distributed ZIP until required native components are built and staged.
 
-## Build overview
+Ammunition data: models/AmmoWikiParser.ts recognizes the two actual Ballistics Wiki table formats, reads the Wiki's six armor class ratings directly, and preserves multi-projectile damage strings such as 8x39. models/AmmoWikiExpandedSeed.ts includes 42 rows from the Wiki omitted by the previous parser. The original 148 seed records remain unchanged. An old v1 ammo cache is ignored in favor of the validated v2 cache.
 
-- Run npm ci from the repository root to install Electron project dependencies.
-- Run npm run package for Electron packaging step.
-- The popup is built in tauri-popup/src-tauri with cargo build --release.
-- Native C++ projects: lib/ocr_cpp, lib/configure_screen, lib/setalwaysontop.
-- Python worker source: rapidocr_worker.py; PyInstaller spec: PriceCheckerRapidOCR.spec.
-- The Electron packager copies lib/ocr into packaged resources. Native OCR
-  executables and the Python OCR worker must be compiled and staged there first.
-- The separately built Tauri popup executable also needs to be included in
-  the final application resources.
-- The exact complete v1.00 packaging pipeline has NOT been scripted here.
-  npm run package on its own does NOT reproduce the full published portable ZIP.
-- OCR language/model data, prebuilt executables and installed dependencies
-  are intentionally not included in this source ZIP.
-- Bender/Nunito fonts are intentionally not included in the prepared source
-  upload; check their provenance and licenses before obtaining them. The app
-  styles reference those fonts.
-- No user configurations or machine-specific build products are included.
+Audit dated 2026-10-23: 190 Wiki Ballistics records match 186 of 200 items classified as ammunition by Tarkov's item catalog. Grenades, signal flares and one regular bullet (.50 AE FMJ Bull) remain without matching Wiki rows; the app does not invent values.
 
-For a ready-to-run version, get the portable ZIP or online installer from Releases.
-
-## Credits and licenses
-
-Based on the FleaTooltip project by sammereye.
-See CREDITS.md in this GitHub repository and THIRD_PARTY_LICENSES included here.
-The original FleaTooltip package.json declares MIT; individual fonts/models/
-third-party components may have different licensing.
+See CREDITS.md and THIRD_PARTY_LICENSES. Based on FleaTooltip by sammereye: https://github.com/sammereye/flea-tooltip

@@ -29,6 +29,8 @@ You can repeat these steps with **F2** whenever you need to recalibrate.
 - **Tooltip Popup Testing** — Preview price, quest, and ammunition popups without launching Tarkov.
 - **System Tray Support** — Keep the application running with Settings hidden.
 
+The current v1.00 uses the native **Qt Quick popup renderer**. Ammo charts use the Tarkov Wiki's Ballistics table including multi-projectile damage rows. See the v1.00 Source folder for source and build requirements.
+
 ## Downloads
 
 ### Online Installer (.exe)

@@ -15,7 +15,8 @@ export default class Item {
   ammoStats?: AmmoStats;
 }
 
-export type AmmoStats = { name: string; damage: number; penetration: number; ratings: number[] };
+// Damage can be a pellet count x per-pellet damage (e.g. "8x39") from Wiki.
+export type AmmoStats = { name: string; damage: number | string; penetration: number; ratings: number[] };
 
 type ItemPrices = {
   latest: number;

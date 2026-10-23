@@ -128,7 +128,7 @@ lib/setalwaysontop/x64
 *.out
 *.app
 
-# Tarkov Tooltips generated and local artifacts
+# Local build and runtime files
 lib/ocr/
 lib/ocr_cpp/packages/
 lib/ocr_cpp/**/x64/

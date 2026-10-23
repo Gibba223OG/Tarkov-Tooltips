@@ -13,6 +13,7 @@ const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
     extraResource: [
+      "qt-popup-dist/TarkovTooltipsQtPopup",
       "lib/ocr",
       "favicon.ico",
       // "renderer/assets/item-scanned.wav",
