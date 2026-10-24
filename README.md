@@ -1,66 +1,56 @@
-# Tarkov Tooltips v1.00
+# Tarkov Tooltips 1.01
 
-**Tarkov Tooltips** is an in-game overlay for *Escape from Tarkov* that automatically identifies items and displays useful information, including market prices, the best trader to sell to, quest requirements, and ammunition statistics.
+**Tarkov Tooltips** is an unofficial Windows OCR overlay for *Escape from
+Tarkov*. It recognizes item tooltips in-game and displays flea prices,
+best sell trader, quest requirements and ammunition statistics.
 
-Get the information you need without constantly switching to external websites.
+## Download
 
-## Initial Setup — Screen Calibration
+Download **Tarkov-Tooltips-v1.01-Win64-Portable.zip** from
+[Release 1.01](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.01).
+Extract into a new folder and run `Tarkov Tooltips.exe`.
 
-After installing the app, calibrate it to recognize where Tarkov's item tooltips appear on your screen:
+The v1.00 online installer is retained only under the historical
+[v1.00 release](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00);
+it does **not** install 1.01. Version 1.01 provides a portable ZIP only.
 
-1. Launch **Tarkov Tooltips** and open *Escape from Tarkov*.
-2. Open your inventory and press **F2** once to start calibration.
-3. Hover over an item until **Tarkov's own item tooltip** appears. **Keep the mouse completely still.**
-4. Once Tarkov Tooltips shows that calibration is ready, press **F2** again to scan the tooltip border. **Do not move the mouse until the scan finishes.**
-5. When you see **Calibration complete**, press **F2** a third time. Tarkov Tooltips will restart and apply the saved calibration.
+## Setup
 
-You can repeat these steps with **F2** whenever you need to recalibrate.
+1. Launch Tarkov Tooltips and Escape from Tarkov.
+2. Open your inventory and press **F2** to begin screen calibration.
+3. Hover an item and keep the pointer still when its game tooltip appears.
+4. Press F2 to scan the border. Do not move the mouse while it scans.
+5. At "Calibration complete", press F2 again to restart/apply settings.
 
-## Features
+Press **F1** to show or hide Settings.
 
-- **Automatic Item Recognition** — Uses OCR to detect items when hovering over them in-game.
-- **Flea Market Prices** — Displays item prices directly in the tooltip.
-- **Best Trader to Sell To** — Identifies the trader offering the best selling price for an item.
-- **Quest Requirements** — Shows which quests require an item and how many are needed.
-- **Ammunition Statistics** — Displays damage, penetration, and visual effectiveness ratings against armor classes 1–6.
-- **PvE Support** — Switch between regular and PvE market pricing.
-- **Customizable Popups** — Independently adjust the size of normal item and ammunition tooltips.
-- **Appearance Settings** — Customize background and border colors, with a live preview and optional bold pricing.
-- **Tooltip Popup Testing** — Preview price, quest, and ammunition popups without launching Tarkov.
-- **System Tray Support** — Keep the application running with Settings hidden.
+## New in 1.01
 
-The current v1.00 uses the native **Qt Quick popup renderer**. Ammo charts use the Tarkov Wiki's Ballistics table including multi-projectile damage rows. See the v1.00 Source folder for source and build requirements.
+- **Tarkov.dev** for live item prices, quests and trader barter-input uses.
+- **Persistent validated caches** with last-good fallback across restarts
+  and separate Regular/PvE data.
+- **Quest indicators:** API item requirements and FIR quantities; limited
+  key/special-slot supplement; Gunsmith weapon-build objectives excluded.
+- **Trader portraits and currencies:** Peacekeeper uses $, others use ₽.
+- **Barter-exchange marker** for items used in at least one trader barter.
+- **Settings API/cache status**, with Calibration instructions first.
+- **Tarkov Wiki ammo status** now records successful live verification.
+- Compact Qt popup visual adjustments, including a 2-logical-pixel lower
+  trader margin addition over the latest internal test.
 
-## Downloads
+## Source
 
-### Online Installer (.exe)
+[Version 1.01 source](https://github.com/Gibba223OG/Tarkov-Tooltips/tree/main/Tarkov-Tooltips-v1.01-Source)
+contains current Qt/data source and exact released JavaScript runtime
+reference. Read **SOURCE_BUILDING.md** for native dependencies and the
+important qualification that a clean-source reproducible build has not
+yet been established.
 
-- Small download (~2.5 MB).
-- Automatically downloads the application from GitHub.
-- Choose your preferred installation directory.
-- Creates shortcuts and provides an uninstaller.
+## Verification
 
-### Portable Version (.zip)
+The release was tested with Qt snapshots, regular/PvE cache and quest
+checks, Electron startup and native OCR launch in a Windows VM. **Live
+in-game behavior on the user's PC remains unverified.**
 
-- No installation required.
-- Extract the ZIP into any folder.
-- Launch `Tarkov Tooltips.exe`.
-
-Both versions provide the same functionality.
-
-## Controls
-
-| Key    | Function                    |
-| ------ | --------------------------- |
-| **F1** | Show / hide Settings        |
-| **F2** | Calibrate tooltip detection |
-
-## Credits
-
-Tarkov Tooltips is based on the original open-source project **[FleaTooltip by Sammer (@sammereye)](https://github.com/sammereye/flea-tooltip)**.
-
-Special thanks to Sammer for developing and sharing the original application that served as the foundation for this project.
-
----
-
-*This is an unofficial community application and is not affiliated with or endorsed by Battlestate Games.*
+Based on [FleaTooltip by Sammer](https://github.com/sammereye/flea-tooltip).
+Not affiliated with Battlestate Games.

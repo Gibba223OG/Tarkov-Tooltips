@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("./Nunito-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./Nunito-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./Nunito-SemiBold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./Nunito-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./Nunito-ExtraBold.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./Nunito-Black.ttf");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Bender Light";
+  src: url("./bender.light.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Bender";
+  src: url("./bender.regular.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Bender";
+  src: url("./bender.bold.otf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Bender";
+  src: url("./bender.black.otf");
+  font-weight: 900;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.draggable {
+  -webkit-app-region: drag;
+}
+/* Tarkov-inspired charcoal palette; original layout and typography retained. */
+html, body { background: transparent; color: #e1e0d8; font-family: "Bender Light", "Bender", "Nunito", sans-serif; }
+button, input, select, textarea { color-scheme: dark; }
+::selection { background: #596454; color: #fff; }
+
+/* Settings fill the window; scroll with wheel/touchpad without a visible bar. */
+.pricechecker-settings-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pricechecker-settings-scroll::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}

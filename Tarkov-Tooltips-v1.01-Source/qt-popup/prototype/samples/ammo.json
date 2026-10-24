@@ -1,0 +1,32 @@
+{
+  "id": "56dff061d2720bb5668b4567",
+  "name": "5.45x39mm BT gs",
+  "shortName": "BT gs",
+  "availableOnFleaMarket": true,
+  "prices": {
+    "latest": 40300,
+    "avgDay": 41000,
+    "avgWeek": 41000,
+    "trader": {
+      "name": "Mechanic",
+      "price": 18000
+    }
+  },
+  "tasks": [],
+  "slots": 1,
+  "icon": "",
+  "isAmmoRound": true,
+  "ammoStats": {
+    "name": "5.45x39mm BT gs T",
+    "damage": 54,
+    "penetration": 37,
+    "ratings": [
+      6,
+      6,
+      6,
+      5,
+      3,
+      2
+    ]
+  }
+}

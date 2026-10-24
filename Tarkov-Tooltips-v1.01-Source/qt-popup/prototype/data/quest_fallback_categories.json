@@ -1,0 +1,238 @@
+{
+  "WI-FI Camera": {
+    "id": "5b4391a586f7745321235ab2",
+    "category": "special-purpose"
+  },
+  "Dorm room 206 key": {
+    "id": "5938603e86f77435642354f4",
+    "category": "key"
+  },
+  "Unknown key": {
+    "id": "593962ca86f774068014d9af",
+    "category": "key"
+  },
+  "Primorsky 46-48 skybridge key": {
+    "id": "63a39e1d234195315d4020bd",
+    "category": "key"
+  },
+  "MS2000 Marker": {
+    "id": "5991b51486f77447b112d44f",
+    "category": "special-purpose"
+  },
+  "Labrys access keycard": {
+    "id": "679b9819a2f2dd4da9023512",
+    "category": "key"
+  },
+  "OLI logistics department office key": {
+    "id": "5ad5cfbd86f7742c825d6104",
+    "category": "key"
+  },
+  "Signal Jammer": {
+    "id": "5ac78a9b86f7741cca0bbd8d",
+    "category": "special-purpose"
+  },
+  "Operating room key": {
+    "id": "62987da96188c076bc0d8c51",
+    "category": "key"
+  },
+  "Dorm room 303 key": {
+    "id": "593aa4be86f77457f56379f8",
+    "category": "key"
+  },
+  "Trailer park portable cabin key": {
+    "id": "5913611c86f77479e0084092",
+    "category": "key"
+  },
+  "Tarcone Director's office key": {
+    "id": "5780d0532459777a5108b9a2",
+    "category": "key"
+  },
+  "Leatherman Multitool": {
+    "id": "544fb5454bdc2df8738b456a",
+    "category": "special-purpose"
+  },
+  "Dorm room 220 key": {
+    "id": "5780cfa52459777dfb276eb1",
+    "category": "key"
+  },
+  "Factory emergency exit key": {
+    "id": "5448ba0b4bdc2d02308b456c",
+    "category": "key"
+  },
+  "RB-KSM key": {
+    "id": "5d947d4e86f774447b415895",
+    "category": "key"
+  },
+  "RB-SMP key": {
+    "id": "5d947d3886f774447b415893",
+    "category": "key"
+  },
+  "RB-ORB1 key": {
+    "id": "5d80ccac86f77470841ff452",
+    "category": "key"
+  },
+  "RB-ORB2 key": {
+    "id": "5d80ccdd86f77474f7575e02",
+    "category": "key"
+  },
+  "RB-ORB3 key": {
+    "id": "5d80cd1a86f77402aa362f42",
+    "category": "key"
+  },
+  "RB-OB key": {
+    "id": "5d80c6c586f77440351beef1",
+    "category": "key"
+  },
+  "Health Resort west wing room 216 key": {
+    "id": "5a0ee30786f774023b6ee08f",
+    "category": "key"
+  },
+  "Health Resort east wing room 306 key": {
+    "id": "5a145d4786f7744cbb6f4a12",
+    "category": "key"
+  },
+  "Health Resort east wing room 308 key": {
+    "id": "5a145d7b86f7744cbb6f4a13",
+    "category": "key"
+  },
+  "Health Resort west wing room 306 key": {
+    "id": "5a13f46386f7741dd7384b04",
+    "category": "key"
+  },
+  "Pinewood hotel room 215 key": {
+    "id": "63a39f08cd6db0635c197600",
+    "category": "key"
+  },
+  "Cottage back door key": {
+    "id": "5a0eb6ac86f7743124037a28",
+    "category": "key"
+  },
+  "RB-ST key": {
+    "id": "5d9f1fa686f774726974a992",
+    "category": "key"
+  },
+  "Dorm room 203 key": {
+    "id": "5938504186f7740991483f30",
+    "category": "key"
+  },
+  "Health Resort west wing office room 112 key": {
+    "id": "5a0dc95c86f77452440fc675",
+    "category": "key"
+  },
+  "EMERCOM medical unit key": {
+    "id": "5ad5db3786f7743568421cce",
+    "category": "key"
+  },
+  "Concordia security room key": {
+    "id": "63a39c7964283b5e9c56b280",
+    "category": "key"
+  },
+  "CMS surgical kit": {
+    "id": "5d02778e86f774203e7dedbe",
+    "category": "special-purpose"
+  },
+  "Paracord": {
+    "id": "5c12688486f77426843c7d32",
+    "category": "special-purpose"
+  },
+  "ZB-014 key": {
+    "id": "591afe0186f77431bd616a11",
+    "category": "key"
+  },
+  "Military checkpoint key": {
+    "id": "5913915886f774123603c392",
+    "category": "key"
+  },
+  "Gas station storage room key": {
+    "id": "5913877a86f774432f15d444",
+    "category": "key"
+  },
+  "TerraGroup Labs access keycard": {
+    "id": "5c94bbff86f7747ee735c08f",
+    "category": "key"
+  },
+  "Dorm room 314 marked key": {
+    "id": "5780cf7f2459777de4559322",
+    "category": "key"
+  },
+  "Dorm overseer key": {
+    "id": "664d4b0103ef2c61246afb56",
+    "category": "key"
+  },
+  "Goshan cash register key": {
+    "id": "5ad7247386f7747487619dc3",
+    "category": "key"
+  },
+  "Corpse room key": {
+    "id": "679bab714e9ca6b3d80586b4",
+    "category": "key"
+  },
+  "Health Resort west wing room 219 key": {
+    "id": "5a13ef0686f7746e5a411744",
+    "category": "key"
+  },
+  "Health Resort west wing room 220 key": {
+    "id": "5a0ee34586f774023b6ee092",
+    "category": "key"
+  },
+  "Health Resort office key with a blue tape": {
+    "id": "5eff09cd30a7dc22fd1ddfed",
+    "category": "key"
+  },
+  "Shturman's stash key": {
+    "id": "5d08d21286f774736e7c94c3",
+    "category": "key"
+  },
+  "Health Resort east wing room 328 key": {
+    "id": "5a0eee1486f77402aa773226",
+    "category": "key"
+  },
+  "RSP-30 reactive signal cartridge (Yellow)": {
+    "id": "624c0b3340357b5f566e8766",
+    "category": "special-purpose"
+  },
+  "Keycard with a blue marking": {
+    "id": "5efde6b4f5448336730dbd61",
+    "category": "key"
+  },
+  "Digital secure DSP radio transmitter": {
+    "id": "62e910aaf957f2915e0a5e36",
+    "category": "special-purpose"
+  },
+  "Radar station commandant room key": {
+    "id": "62987c658081af308d7558c6",
+    "category": "key"
+  },
+  "Kiba Arms outer door key": {
+    "id": "5ad5d7d286f77450166e0a89",
+    "category": "key"
+  },
+  "Kiba Arms inner grate door key": {
+    "id": "5addaffe86f77470b455f900",
+    "category": "key"
+  },
+  "Object #21WS keycard": {
+    "id": "5e42c83786f7742a021fdf3c",
+    "category": "key"
+  },
+  "TerraGroup Labs weapon testing area key": {
+    "id": "5c1e2d1f86f77431e9280bee",
+    "category": "key"
+  },
+  "TerraGroup Labs keycard (Black)": {
+    "id": "5c1d0f4986f7744bb01837fa",
+    "category": "key"
+  },
+  "TerraGroup Labs manager's office room key": {
+    "id": "5c1e2a1e86f77431ea0ea84c",
+    "category": "key"
+  },
+  "Factory plan map": {
+    "id": "574eb85c245977648157eec3",
+    "category": "special-purpose"
+  },
+  "Missam forklift key": {
+    "id": "62a09ec84f842e1bd12da3f2",
+    "category": "key"
+  }
+}
