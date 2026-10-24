@@ -6,13 +6,20 @@ best sell trader, quest requirements and ammunition statistics.
 
 ## Download
 
-Download **Tarkov-Tooltips-v1.01-Win64-Portable.zip** from
-[Release 1.01](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.01).
-Extract into a new folder and run `Tarkov Tooltips.exe`.
+**Online installer (.exe):** [Tarkov-Tooltips-v1.01.Win64.exe](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01.Win64.exe).
+This small installer downloads the verified 1.01 application (~305 MB),
+installs it to the location you choose, and creates Start Menu shortcuts.
+An optional desktop shortcut and an uninstaller are included.
 
-The v1.00 online installer is retained only under the historical
-[v1.00 release](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00);
-it does **not** install 1.01. Version 1.01 provides a portable ZIP only.
+**Portable ZIP:** [Tarkov-Tooltips-v1.01-Win64-Portable.zip](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01-Win64-Portable.zip).
+Extract to a new folder and run `Tarkov Tooltips.exe`.
+
+Both options contain the same 1.01 application. The separate
+`Win64-InstallerPayload.zip` release asset is an **automatic dependency
+of the online installer**, not an additional download you need to install manually.
+
+Historical [v1.00 installers](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00)
+remain available for rollback.
 
 ## Setup
 

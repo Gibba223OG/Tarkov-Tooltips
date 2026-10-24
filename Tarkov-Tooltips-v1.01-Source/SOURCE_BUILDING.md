@@ -46,6 +46,34 @@ reference. The trader portrait set was user supplied; redistribution
 permissions for artwork are not independently established. Do not assume
 that game artwork or third-party assets are freely relicensable.
 
+## v1.01 online installer
+
+The installer source is `installer/TarkovTooltips-v1.01-Online.iss`.
+It uses Inno Setup 6.7.3 with the same AppId as v1.00 for normal
+upgrade/uninstall identity. It downloads the *flat* installer payload:
+
+`https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01-Win64-InstallerPayload.zip`
+
+Installer payload SHA-256: `e968312dc5ab178f6e9c13bda00c66aba3a5381b0a19e65a5f9d555bed39b23c`.
+The flat ZIP contains the same 1,897 application files as the separately
+published portable ZIP, but has no common enclosing directory, allowing
+Inno to extract directly into the selected install folder. Users should
+not download the installer payload separately.
+
+The small EXE has been built with Inno Setup; this source script has
+local absolute `SetupIconFile`/`OutputDir` paths from the build VM, so
+adjust those two paths when building elsewhere. For an identical release,
+keep the stable AppId and the pinned download URL, payload size/hash.
+Do not use the regular portable ZIP as the installer download; its
+top-level directory creates broken installed paths.
+
+Validation in a Windows VM used an isolated *test-only AppId* rather
+than overwriting an existing v1.00 install. A live HTTPS download from
+GitHub, checksum verification, extraction of all 1,897 files with SHA-256
+comparison, and silent uninstall all passed. An actual upgrade from a
+previous installed v1.00 has not been tested. See project's installer
+test records for the isolated-build distinction.
+
 ## v1.01 testing
 
 - Compared packaged price, quest and unmatched Qt renderings to internal
