@@ -4,6 +4,14 @@
 Tarkov*. It recognizes item tooltips in-game and displays flea prices,
 best sell trader, quest requirements and ammunition statistics.
 
+<img width="96" height="68" alt="ChatGPT Image Oct 24, 2026, 11_32_44 PM" src="https://github.com/user-attachments/assets/0c218020-7811-42f9-bf27-cc4c9fe7252d" />
+<img width="383" height="118" alt="ChatGPT Image Oct 24, 2026, 11_32_48 PM" src="https://github.com/user-attachments/assets/a56fa660-900d-4965-b857-d6435914534a" />
+<img width="385" height="149" alt="ChatGPT Image Oct 24, 2026, 11_32_51 PM" src="https://github.com/user-attachments/assets/eda00392-dfec-4a5c-aac7-61e6266dc56f" />
+
+
+
+
+
 ## Download
 
 **Online installer (.exe):** [Tarkov-Tooltips-v1.01.Win64.exe](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01.Win64.exe).
@@ -30,6 +38,10 @@ remain available for rollback.
 5. At "Calibration complete", press F2 again to restart/apply settings.
 
 Press **F1** to show or hide Settings.
+
+
+<img width="559" height="1623" alt="ChatGPT Image Oct 24, 2026, 11_32_39 PM" src="https://github.com/user-attachments/assets/b1d7a87b-55be-4170-a711-8a676d628549" />
+
 
 ## New in 1.01
 
