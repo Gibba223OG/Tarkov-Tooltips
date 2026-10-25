@@ -57,13 +57,6 @@ Press **F1** to show or hide Settings.
 - Compact Qt popup visual adjustments, including a 2-logical-pixel lower
   trader margin addition over the latest internal test.
 
-## Source
-
-[Version 1.01 source](https://github.com/Gibba223OG/Tarkov-Tooltips/tree/main/Tarkov-Tooltips-v1.01-Source)
-contains current Qt/data source and exact released JavaScript runtime
-reference. Read **SOURCE_BUILDING.md** for native dependencies and the
-important qualification that a clean-source reproducible build has not
-yet been established.
 
 ## Verification
 
