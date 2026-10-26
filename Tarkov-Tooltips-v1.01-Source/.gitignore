@@ -130,6 +130,7 @@ lib/setalwaysontop/x64
 
 # Local build and runtime files
 lib/ocr/
+qt-popup-dist/
 lib/ocr_cpp/packages/
 lib/ocr_cpp/**/x64/
 lib/configure_screen/x64/
