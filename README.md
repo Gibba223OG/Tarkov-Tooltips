@@ -29,6 +29,10 @@ of the online installer**, not an additional download you need to install manual
 Historical [v1.00 installers](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00)
 remain available for rollback.
 
+## Recover development after a VM reset
+
+The [v1.01 recovery guide](Tarkov-Tooltips-v1.01-Source/RECOVERY_AND_CLEANUP.md) provides a tested path to restore the published Windows app, native Qt/OCR runtimes, and required fonts from the checksum-verified [v1.01 GitHub release](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.01), then install dependencies and package the editable Electron source from a fresh clone. This does **not** prove that the C++/Qt native helpers can be independently rebuilt or that the newly compiled JavaScript exactly matches the released application. Back up unpublished work separately before wiping a VM.
+
 ## Setup
 
 1. Launch Tarkov Tooltips and Escape from Tarkov.
