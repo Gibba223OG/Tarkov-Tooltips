@@ -23,6 +23,15 @@ JavaScript runtime** from the public 1.01 portable ZIP for auditability.
   including the running main process, preload, renderer and HTML. This is
   preserved to distinguish distributed behavior from editable source.
 
+## Verified recovery and Electron build (2026-10-26)
+
+The new [GitHub recovery guide](RECOVERY_AND_CLEANUP.md) and `tools/` scripts provide a tested path from a fresh GitHub clone back to the published v1.01 portable application and its native Qt/OCR assets.
+
+- Fresh internet download of the official v1.01 portable ZIP passed pinned SHA-256 verification and restored all 1,897 files.
+- A fresh GitHub source clone with native Qt/OCR runtimes and ten CSS fonts staged from that verified release passed `npm.cmd ci`, TypeScript `tsc --noEmit`, and `npm.cmd run package` on the Windows VM.
+- This is a **working Electron source-build workflow using release-supplied native binaries**, not proof of native C++/Qt/ONNX source compilation or pixel/behavioral equivalence to the released app.
+- No private credentials, licensed fonts, model weights, or native compiled release files are checked into Git as source. Their local recovery is recorded and SHA-256 checked.
+
 ## Important reproducibility limitation
 
 The portable was created by verified binary-preserving updates to the
