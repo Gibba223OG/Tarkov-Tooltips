@@ -29,10 +29,6 @@ of the online installer**, not an additional download you need to install manual
 Historical [v1.00 installers](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00)
 remain available for rollback.
 
-## Recover development after a VM reset
-
-**Maintained editable source:** [Tarkov-Tooltips-Source](Tarkov-Tooltips-Source/) with [Windows build instructions](Tarkov-Tooltips-Source/BUILD_WINDOWS.md) and [verified release recovery](Tarkov-Tooltips-Source/RECOVERY_AND_CLEANUP.md). The master script rebuilds Electron, active C++ capture, Qt popup and RapidOCR from source. The calibration helper is also compiled from source; third-party fonts come from the hash-pinned v1.01 release. Prior source folders remain in Git history, not parallel maintained folders. Real Tarkov gameplay parity still requires user testing.
-
 ## Setup
 
 1. Launch Tarkov Tooltips and Escape from Tarkov.
