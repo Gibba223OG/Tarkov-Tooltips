@@ -60,9 +60,5 @@ Press **F1** to show or hide Settings.
 
 ## Verification
 
-The release was tested with Qt snapshots, regular/PvE cache and quest
-checks, Electron startup and native OCR launch in a Windows VM. **Live
-in-game behavior on the user's PC remains unverified.**
-
 Based on [FleaTooltip by Sammer](https://github.com/sammereye/flea-tooltip).
 Not affiliated with Battlestate Games.
