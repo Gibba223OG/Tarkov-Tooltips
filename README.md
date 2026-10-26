@@ -31,7 +31,7 @@ remain available for rollback.
 
 ## Recover development after a VM reset
 
-The [v1.01 recovery guide](Tarkov-Tooltips-v1.01-Source/RECOVERY_AND_CLEANUP.md) provides a tested path to restore the published Windows app, native Qt/OCR runtimes, and required fonts from the checksum-verified [v1.01 GitHub release](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.01), then install dependencies and package the editable Electron source from a fresh clone. This does **not** prove that the C++/Qt native helpers can be independently rebuilt or that the newly compiled JavaScript exactly matches the released application. Back up unpublished work separately before wiping a VM.
+**Maintained editable source:** [Tarkov-Tooltips-Source](Tarkov-Tooltips-Source/) with [Windows build instructions](Tarkov-Tooltips-Source/BUILD_WINDOWS.md) and [verified release recovery](Tarkov-Tooltips-Source/RECOVERY_AND_CLEANUP.md). The master script rebuilds Electron, active C++ capture, Qt popup and RapidOCR from source. The calibration helper is also compiled from source; third-party fonts come from the hash-pinned v1.01 release. Prior source folders remain in Git history, not parallel maintained folders. Real Tarkov gameplay parity still requires user testing.
 
 ## Setup
 
