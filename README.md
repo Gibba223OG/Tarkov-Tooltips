@@ -1,4 +1,4 @@
-# Tarkov Tooltips 1.02
+# Tarkov Tooltips 1.01
 
 **Tarkov Tooltips** is an unofficial Windows OCR overlay for *Escape from
 Tarkov*. It recognizes item tooltips in-game and displays flea prices,
@@ -14,19 +14,19 @@ best sell trader, quest requirements and ammunition statistics.
 
 ## Download
 
-**Online installer (.exe):** [Tarkov-Tooltips-v1.02.Win64.exe](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.02/Tarkov-Tooltips-v1.02.Win64.exe).
-This small installer downloads the verified 1.02 application (~305 MB),
+**Online installer (.exe):** [Tarkov-Tooltips-v1.01.Win64.exe](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01.Win64.exe).
+This small installer downloads the verified 1.01 application (~305 MB),
 installs it to the location you choose, and creates Start Menu shortcuts.
 An optional desktop shortcut and an uninstaller are included.
 
-**Portable ZIP:** [Tarkov-Tooltips-v1.02-Win64-Portable.zip](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.02/Tarkov-Tooltips-v1.02-Win64-Portable.zip).
+**Portable ZIP:** [Tarkov-Tooltips-v1.01-Win64-Portable.zip](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01-Win64-Portable.zip).
 Extract to a new folder and run `Tarkov Tooltips.exe`.
 
-Both options contain the same 1.02 application. The separate
+Both options contain the same 1.01 application. The separate
 `Win64-InstallerPayload.zip` release asset is an **automatic dependency
 of the online installer**, not an additional download you need to install manually.
 
-Previous [v1.01 release](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.01) and [v1.00 release](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00)
+Historical [v1.00 installers](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/tag/1.00)
 remain available for rollback.
 
 ## Setup
@@ -43,14 +43,7 @@ Press **F1** to show or hide Settings.
 <img width="559" height="1623" alt="ChatGPT Image Oct 24, 2026, 11_32_39 PM" src="https://github.com/user-attachments/assets/b1d7a87b-55be-4170-a711-8a676d628549" />
 
 
-## New in 1.02
-
-- When an already-detected item tooltip disappears without mouse movement, check a small border sample every 180 ms and hide after two consecutive misses.
-- Ignore delayed OCR results after tooltip dismissal, preventing the popup from reappearing from stale results.
-- Both changes were compiled and VM tested; user reports the newer v1.01.5 test build works on their PC.
-- All original v1.01 price, quest, ammo and trader behavior is intended to remain unchanged.
-
-## Previous 1.01 changes
+## New in 1.01
 
 - **Tarkov.dev** for live item prices, quests and trader barter-input uses.
 - **Persistent validated caches** with last-good fallback across restarts
