@@ -43,21 +43,6 @@ Press **F1** to show or hide Settings.
 <img width="559" height="1623" alt="ChatGPT Image Oct 24, 2026, 11_32_39 PM" src="https://github.com/user-attachments/assets/b1d7a87b-55be-4170-a711-8a676d628549" />
 
 
-## New in 1.01
-
-- **Tarkov.dev** for live item prices, quests and trader barter-input uses.
-- **Persistent validated caches** with last-good fallback across restarts
-  and separate Regular/PvE data.
-- **Quest indicators:** API item requirements and FIR quantities; limited
-  key/special-slot supplement; Gunsmith weapon-build objectives excluded.
-- **Trader portraits and currencies:** Peacekeeper uses $, others use ₽.
-- **Barter-exchange marker** for items used in at least one trader barter.
-- **Settings API/cache status**, with Calibration instructions first.
-- **Tarkov Wiki ammo status** now records successful live verification.
-- Compact Qt popup visual adjustments, including a 2-logical-pixel lower
-  trader margin addition over the latest internal test.
-
-
 ## Verification
 
 Based on [FleaTooltip by Sammer](https://github.com/sammereye/flea-tooltip).
