@@ -287,6 +287,12 @@ export default class OCRProcess {
       const text = new String(data);
       const incomingData = text.toString().trim();
       if (incomingData === "MOUSEMOVE") {
+        // A capture can finish in RapidOCR after the game's border vanished.
+        // Drop those orphaned jobs so a late response cannot re-show a stale item.
+        for (const capture of this.pendingCaptures.values()) {
+          fs.unlink(capture.path, () => {});
+        }
+        this.pendingCaptures.clear();
         this.tooltipVisibilityToken++;
         this.currentTooltipItemId = null;
         if (this.tauriPopup) this.tauriPopup.hide();

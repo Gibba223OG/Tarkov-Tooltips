@@ -379,6 +379,33 @@ static bool detectTooltipByBottomBorder(
     return false;
 }
 
+
+// Cheap presence probe for an already-recognized tooltip. Unlike the full
+// detector, this only captures the 27x5 calibrated bottom-border seed.
+// Capture errors fail open so desktop read failures never dismiss a valid card.
+static bool tooltipBottomBorderStillVisible(
+    HDC dc, const POINT& mouse, int calibratedBottomY, const RECT& monitorRect)
+{
+    const int x0=std::max(static_cast<int>(monitorRect.left),
+                          static_cast<int>(mouse.x)-13);
+    const int x1=std::min(static_cast<int>(monitorRect.right)-1,
+                          static_cast<int>(mouse.x)+13);
+    const int y0=std::max(static_cast<int>(monitorRect.top),calibratedBottomY-2);
+    const int y1=std::min(static_cast<int>(monitorRect.bottom)-1,calibratedBottomY+2);
+    if (x1<x0 || y1<y0) return true; // no trustworthy sample
+    if (!capturePixelRegion(dc,x0,y0,x1-x0+1,y1-y0+1,true)) return true;
+    for (int y=y0;y<=y1;++y) {
+        for (int x=x0;x<=x1;++x) {
+            if (x<SHRT_MIN || x>SHRT_MAX || y<SHRT_MIN || y>SHRT_MAX)
+                return true; // cannot sample safely
+            short r=0,g=0,b=0;
+            if (pixelIsValid(static_cast<short>(x),static_cast<short>(y),r,g,b))
+                return true;
+        }
+    }
+    return false;
+}
+
 static std::string scanForText(int x1, int y1, int width, int height) {
     if (!cachedDesktopDC || width < 1 || height < 1) return "";
     static unsigned long serial = 0;
@@ -511,6 +538,8 @@ int main(int argc, char* argv[])
 	short mouseStationaryCount = 0;
 	bool foundTooltip = false;
 	bool showedMouseMoved = false;
+    int absentBorderSamples = 0;
+    auto nextBorderPresenceCheck = std::chrono::steady_clock::now();
 
 	
 	// Optimized polling loop (optimization #7)
@@ -537,6 +566,8 @@ int main(int argc, char* argv[])
                 lastValidMousePos = mousePos;
 				mouseStationaryCount = 0;
 				foundTooltip = false;
+                absentBorderSamples = 0;
+                nextBorderPresenceCheck = std::chrono::steady_clock::now();
 				sleepInterval = 50; // Longer interval when moving (optimization #7)
 				cachedPixelBuffer.pixels.clear(); // Clear pixel cache
 				lastScannedCursor = {0, 0}; // Reset last scanned cursor position
@@ -544,6 +575,39 @@ int main(int argc, char* argv[])
 
 			bottomLeftBorderPoint.x = mousePos.x + CURSOR_TOOLTIP_OFFSET_X;
 			bottomLeftBorderPoint.y = mousePos.y + CURSOR_TOOLTIP_OFFSET_Y;
+
+            // A Tarkov tooltip can disappear without any mouse movement
+            // (inventory closes, focus changes, menu refresh). Previously
+            // foundTooltip stayed true forever and no hide message was sent.
+            // Only poll AFTER a valid OCR capture; 180ms between tiny probes
+            // and require two misses to avoid transient frame flicker.
+            if (foundTooltip &&
+                mousePos.x == lastScannedCursor.x &&
+                mousePos.y == lastScannedCursor.y &&
+                std::chrono::steady_clock::now()>=nextBorderPresenceCheck) {
+                nextBorderPresenceCheck=std::chrono::steady_clock::now()
+                    +std::chrono::milliseconds(180);
+                MONITORINFO info{};info.cbSize=sizeof(info);
+                const HMONITOR mon=MonitorFromPoint(mousePos,MONITOR_DEFAULTTONEAREST);
+                const bool monValid=GetMonitorInfo(mon,&info)!=FALSE;
+                const RECT bounds=monValid ? info.rcMonitor :
+                    RECT{GetSystemMetrics(SM_XVIRTUALSCREEN),
+                         GetSystemMetrics(SM_YVIRTUALSCREEN),
+                         GetSystemMetrics(SM_XVIRTUALSCREEN)+GetSystemMetrics(SM_CXVIRTUALSCREEN),
+                         GetSystemMetrics(SM_YVIRTUALSCREEN)+GetSystemMetrics(SM_CYVIRTUALSCREEN)};
+                const bool present=tooltipBottomBorderStillVisible(
+                    cachedDesktopDC,mousePos,bottomLeftBorderPoint.y,bounds);
+                absentBorderSamples=present ? 0 : absentBorderSamples+1;
+                if (absentBorderSamples>=2) {
+                    cout << "MOUSEMOVE" << endl; // existing protocol: hide popup
+                    fflush(stdout);
+                    showedMouseMoved=true;
+                    foundTooltip=false;
+                    lastScannedCursor={0,0}; // permit future hover at same position
+                    absentBorderSamples=0;
+                    cachedPixelBuffer.pixels.clear();
+                }
+            }
 
 			// Check if we've already scanned this cursor position
 			bool alreadyScanned = (mousePos.x == lastScannedCursor.x && mousePos.y == lastScannedCursor.y);
@@ -587,6 +651,9 @@ int main(int argc, char* argv[])
 
                 if (foundRect) {
                     foundTooltip=true;
+                    absentBorderSamples=0;
+                    nextBorderPresenceCheck=std::chrono::steady_clock::now()
+                        +std::chrono::milliseconds(180);
                     bottomLeftBorderPoint.x=detected.left;
                     bottomLeftBorderPoint.y=detected.bottom;
                     bottomRightBorderPoint.x=detected.right;

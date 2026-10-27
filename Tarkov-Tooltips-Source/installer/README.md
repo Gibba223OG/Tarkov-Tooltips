@@ -1,3 +1,9 @@
+# Tarkov Tooltips 1.02 Online Installer
+
+Build source: TarkovTooltips-v1.02-Online.iss. This installer uses the SAME stable AppId as 1.00/1.01, but downloads and verifies the 1.02 flat installer payload from the GitHub 1.02 release. Never substitute the user-facing portable archive: its top-level directory differs. The payload ZIP hash and exact uncompressed size are pinned in the script. Build using Inno Setup 6.7.3 and the verified payload manifest. The installer is unsigned; Windows may warn.
+
+The old 1.01 compiler instructions below are preserved for rollback and historical reproduction.
+
 # Tarkov Tooltips 1.01 Online Installer
 
 Build source: `TarkovTooltips-v1.01-Online.iss`.
