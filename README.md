@@ -1,4 +1,4 @@
-# Tarkov Tooltips 1.01
+# Tarkov Tooltips 1.02
 
 **Tarkov Tooltips** is an unofficial Windows OCR overlay for *Escape from
 Tarkov*. It recognizes item tooltips in-game and displays flea prices,
@@ -14,15 +14,15 @@ best sell trader, quest requirements and ammunition statistics.
 
 ## Download
 
-**Online installer (.exe):** [Tarkov-Tooltips-v1.01.Win64.exe](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01.Win64.exe).
-This small installer downloads the verified 1.01 application (~305 MB),
+**Online installer (.exe):** [Tarkov-Tooltips-v1.02.Win64.exe](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.02/Tarkov-Tooltips-v1.02.Win64.exe).
+This small installer downloads the verified 1.02 application (~305 MB),
 installs it to the location you choose, and creates Start Menu shortcuts.
 An optional desktop shortcut and an uninstaller are included.
 
-**Portable ZIP:** [Tarkov-Tooltips-v1.01-Win64-Portable.zip](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.01/Tarkov-Tooltips-v1.01-Win64-Portable.zip).
+**Portable ZIP:** [Tarkov-Tooltips-v1.02-Win64-Portable.zip](https://github.com/Gibba223OG/Tarkov-Tooltips/releases/download/1.02/Tarkov-Tooltips-v1.02-Win64-Portable.zip).
 Extract to a new folder and run `Tarkov Tooltips.exe`.
 
-Both options contain the same 1.01 application. The separate
+Both options contain the same 1.02 application. The separate
 `Win64-InstallerPayload.zip` release asset is an **automatic dependency
 of the online installer**, not an additional download you need to install manually.
 
